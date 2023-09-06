@@ -29,3 +29,5 @@ The file `flight_list.csv` has the following columns:
 You can search IATA 3-letter codes on their [official website](https://www.iata.org/en/publications/directories/code-search/).
 
 There are two searches at different time horizons (advance1 and advance2), as this is common practice in several National Statistic Organization. If you only want to retrieve prices with a single time horizon, you can modify the script accordingly.
+
+The file `set_dates.py` only runs on specific dates. It is useful if you want to automate the data collection process, but only perform it on specific date.
