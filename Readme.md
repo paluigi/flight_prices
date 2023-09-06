@@ -13,7 +13,7 @@ You can run the `main.py` script on your own environment, provided you install t
 
 There are two complementary files needed to run this notebook:
 
-*   `amadeus.ini`: You should edit this file with your own API key details
+*   `amadeus.ini`: You should edit this file with your own API key details. Include also your own Minio instance details if you want to save data on object storage.
 *   `flight_list.csv`: You should insert in this files the routes for which you want to retrieve prices.
 
 The script is structured assuming you have those two files in the same folder as the notebook. In case you prefer a different structure, you should adjust the paths to those files accordingly in the cells below.
@@ -30,4 +30,6 @@ You can search IATA 3-letter codes on their [official website](https://www.iata.
 
 There are two searches at different time horizons (advance1 and advance2), as this is common practice in several National Statistic Organization. If you only want to retrieve prices with a single time horizon, you can modify the script accordingly.
 
-The file `set_dates.py` only runs on specific dates. It is useful if you want to automate the data collection process, but only perform it on specific date.
+## Set dates and saving to cloud object storage
+
+The file `set_dates.py` only runs on specific dates. It is useful if you want to automate the data collection process, but only perform it on specific date. It also implement saving the csv file with scraped data to two diferent instance of Minio object storage.
