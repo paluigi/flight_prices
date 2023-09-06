@@ -125,7 +125,8 @@ config_dict = {sect: dict(config.items(sect)) for sect in config.sections()}
 # Instantiate client with secrets from config file
 amadeus = Client(
     client_id=config["DEFAULT"]["amadeus_api_key"],
-    client_secret=config["DEFAULT"]["amadeus_api_secret"]
+    client_secret=config["DEFAULT"]["amadeus_api_secret"],
+    #hostname='production' # Uncomment when using production API keys
 )
 
 # read list of origins and destinations
@@ -162,7 +163,7 @@ home_upload = minio_upload(config_dict, file_name, "HOME")
 
 # Remove file if saved correctly
 if cloud_upload and home_upload:
-    os.remove(daily_file_name)
+    os.remove(file_name)
 else:
     # Move file to archive folder if not uploaded correctly
-    os.rename(daily_file_name, f"archive/{daily_file_name}")
+    os.rename(file_name, f"archive/{file_name}")

@@ -11,7 +11,8 @@ config.read('amadeus.ini')
 # Instantiate client with secrets from config file
 amadeus = Client(
     client_id=config["DEFAULT"]["amadeus_api_key"],
-    client_secret=config["DEFAULT"]["amadeus_api_secret"]
+    client_secret=config["DEFAULT"]["amadeus_api_secret"],
+    #hostname='production' # Uncomment when using production API keys
 )
 
 # read list of origins and destinations
