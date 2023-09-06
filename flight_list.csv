@@ -1,0 +1,6 @@
+origin,destination,stay_days,advance1,advance2
+FCO,PMO,7,10,30
+FCO,LHR,7,10,30
+MXP,FRA,7,10,30
+FCO,MAD,7,10,30
+FCO,JFK,14,30,60
