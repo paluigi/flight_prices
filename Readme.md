@@ -33,3 +33,4 @@ There are two searches at different time horizons (advance1 and advance2), as th
 ## Set dates and saving to cloud object storage
 
 The file `set_dates.py` only runs on specific dates. It is useful if you want to automate the data collection process, but only perform it on specific date. It also implement saving the csv file with scraped data to two diferent instance of Minio object storage.
+Finally, it also send a message for completion to a Telegram chat.

@@ -1,6 +1,7 @@
 # Save data on a Minio backend
 from minio import Minio
 
+
 def minio_upload(config_dict: dict, filename: str, target: str = "CLOUD"):
     """
     Function to load a file into Minio
