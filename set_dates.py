@@ -33,6 +33,7 @@ def get_flight_prices(
     Returns:
     pandas Dataframe with flight information and prices
     """
+    time.sleep(1)
     flight_date = (datetime.now() + timedelta(days=advance_days)).strftime("%Y-%m-%d")
     return_date = (
         datetime.now() + timedelta(days=(advance_days + stay_days))
@@ -54,7 +55,7 @@ def get_flight_prices(
         flight_lists = [flights[i : i + 5] for i in range(0, len(flights), 5)]
         response_all_flights = []
         for f in flight_lists:
-            time.sleep(1)
+            time.sleep(2)
             # Try except block to overcome authentication issues. Maybe related to test environment
             try:
                 response_all_flights.extend(
@@ -128,7 +129,7 @@ def get_flight_prices(
         # raise error
 
 
-def is_first_or_third_wednesday():
+def is_first_or_third_wednesday() -> bool:
     # Returns true if the execution date is the first
     # or third wednesday in the month
     today = datetime.today()
@@ -156,7 +157,7 @@ amadeus = Client(
     client_id=config["DEFAULT"]["amadeus_api_key"],
     client_secret=config["DEFAULT"]["amadeus_api_secret"],
     # comment line below while using sandbox
-    # hostname='production' # Uncomment when using production API keys
+    hostname="production"  # Uncomment when using production API keys
 )
 
 # read list of origins and destinations
@@ -177,6 +178,7 @@ for route in routes_df.itertuples():
     results.append(temp_df.copy())
     # Second advance window
     temp_df = get_flight_prices(
+        amadeus_client=amadeus,
         origin=route.origin,
         destination=route.destination,
         advance_days=route.advance2,
